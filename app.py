@@ -35,9 +35,8 @@ def predict():
     predictions = model.predict(image_array)
     predicted_label = np.argmax(predictions, axis=1)[0]
     confidence = predictions[0][predicted_label] * 100
-    print("prediction",predicted_label,confidence)
 
-    return "predicted"
+    return jsonify({'predicted_label': predicted_label, 'confidence': confidence})
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
